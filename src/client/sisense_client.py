@@ -78,47 +78,6 @@ class SisenseClient:
             response.raise_for_status()
             return response.json()
 
-    async def post_binary(
-        self,
-        endpoint: str,
-        json_data: dict[str, Any] = None,
-        headers: dict[str, str] = None,
-        params: dict[str, Any] = None,
-        timeout: float = 60.0,
-    ) -> bytes:
-        """Make a POST request that returns binary data (e.g., PNG image).
-
-        Args:
-            endpoint: API endpoint path
-            json_data: JSON body data
-            headers: Additional headers to include (merged with default headers)
-            params: Query parameters
-            timeout: Request timeout in seconds (default 60 for image generation)
-
-        Returns:
-            Binary response data as bytes
-
-        Raises:
-            httpx.HTTPStatusError: If the request fails
-            httpx.TimeoutException: If the request times out
-        """
-        # Merge additional headers with default headers
-        request_headers = self.headers.copy()
-        if headers:
-            request_headers.update(headers)
-        # Override Accept header for binary responses
-        request_headers["Accept"] = "image/png"
-
-        async with httpx.AsyncClient(timeout=timeout) as client:
-            response = await client.post(
-                f"{self.base_url}{endpoint}",
-                headers=request_headers,
-                json=json_data,
-                params=params,
-            )
-            response.raise_for_status()
-            return response.content
-
     def encode_datasource_name(self, datasource: str) -> str:
         """URL encode a datasource name for use in API endpoints.
 

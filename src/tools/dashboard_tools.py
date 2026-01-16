@@ -1,6 +1,5 @@
 """MCP tools for Dashboard operations."""
 
-import base64
 import json
 from typing import Any
 
@@ -49,57 +48,6 @@ def get_dashboard_tools() -> list[Tool]:
                 "required": [],
             },
         ),
-        Tool(
-            name="export_dashboard_png",
-            description=(
-                "Export a Sisense dashboard as a PNG image. "
-                "Returns the dashboard rendered as a PNG image file. "
-                "The image is returned as a base64-encoded string that can be used to display or save the dashboard visualization."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "dashboard_id": {
-                        "type": "string",
-                        "description": "ID of the dashboard to export (required)",
-                    },
-                    "width": {
-                        "type": "integer",
-                        "description": "Image width in pixels (default: 1000)",
-                        "default": 1000,
-                    },
-                    "layout": {
-                        "type": "string",
-                        "description": "Layout mode - 'asis' or other layout options (default: 'asis')",
-                        "default": "asis",
-                    },
-                    "show_dashboard_title": {
-                        "type": "boolean",
-                        "description": "Whether to show dashboard title (default: true)",
-                        "default": True,
-                    },
-                    "show_dashboard_filters": {
-                        "type": "boolean",
-                        "description": "Whether to show dashboard filters (default: true)",
-                        "default": True,
-                    },
-                    "show_datasource_info": {
-                        "type": "boolean",
-                        "description": "Whether to show datasource info (default: true)",
-                        "default": True,
-                    },
-                    "shared_mode": {
-                        "type": "boolean",
-                        "description": "If dashboard is in shared mode (optional)",
-                    },
-                    "tenant_id": {
-                        "type": "string",
-                        "description": "Tenant ID for x-tenant-id header (optional)",
-                    },
-                },
-                "required": ["dashboard_id"],
-            },
-        ),
     ]
 
 
@@ -135,31 +83,6 @@ async def handle_dashboard_tool(
             result = await service.get_dashboard(
                 dashboard_id=dashboard_id, dashboard_name=dashboard_name
             )
-
-        elif name == "export_dashboard_png":
-            dashboard_id = arguments.get("dashboard_id")
-            if not dashboard_id:
-                raise ValueError("dashboard_id is required for export_dashboard_png")
-
-            png_data = await service.export_dashboard_png(
-                dashboard_id=dashboard_id,
-                width=arguments.get("width", 1000),
-                layout=arguments.get("layout", "asis"),
-                show_dashboard_title=arguments.get("show_dashboard_title", True),
-                show_dashboard_filters=arguments.get("show_dashboard_filters", True),
-                show_datasource_info=arguments.get("show_datasource_info", True),
-                shared_mode=arguments.get("shared_mode"),
-                tenant_id=arguments.get("tenant_id"),
-            )
-
-            # Encode PNG as base64 for JSON transmission
-            png_base64 = base64.b64encode(png_data).decode("utf-8")
-            result = {
-                "dashboard_id": dashboard_id,
-                "image_format": "png",
-                "image_data_base64": png_base64,
-                "image_size_bytes": len(png_data),
-            }
         else:
             raise ValueError(f"Unknown Dashboard tool: {name}")
 
