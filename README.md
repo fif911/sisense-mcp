@@ -24,9 +24,9 @@ A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for in
 
 Run directly from GitHub using `uvx` (like `npx` for Python):
 
-```bash
+   ```bash
 uvx --from git+https://github.com/fif911/sisense-mcp.git sisense-mcp
-```
+   ```
 
 Then configure your MCP client (see [Configuration](#configuration) section).
 
@@ -47,12 +47,12 @@ Before you can use this MCP server, you need two pieces of information from your
 
 ### 1. Sisense Instance URL
 
-**What it is:** The base URL of your Sisense instance (e.g., `https://your-company.sisense.com` or `https://oxio-dev.sisense.com`).
+**What it is:** The base URL of your Sisense instance (e.g., `https://your-company.sisense.com`).
 
 **How to get it:**
 - Open your Sisense instance in a web browser
 - Copy the URL from the address bar (without any path after `.com`)
-- Example: If you see `https://oxio-dev.sisense.com/app/main#/dashboards`, your base URL is `https://oxio-dev.sisense.com`
+- Example: If you see `https://your-company.sisense.com/app/main#/dashboards`, your base URL is `https://your-company.sisense.com`
 
 ### 2. Personal API Token
 
