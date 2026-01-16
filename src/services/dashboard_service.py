@@ -57,7 +57,7 @@ class DashboardService(SisenseService):
 
         Args:
             dashboard_id: ID of the dashboard (e.g., '68c20e36b10aaf740421cf12')
-            dashboard_name: Name/title of the dashboard (e.g., 'Telecom Services (1)')
+            dashboard_name: Name/title of the dashboard (e.g., 'Revenue over time')
 
         Returns:
             Full dashboard object with all fields from the Sisense API

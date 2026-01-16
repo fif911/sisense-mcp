@@ -495,8 +495,8 @@ If you cloned the repository locally, use the directory-based approach:
 [
 {
     "_id": "68c20e36b10aaf740421cf12",
-    "title": "Telecom Services (1)",
-    "desc": "Telecom services dashboard",
+    "title": "Revenue over time",
+    "desc": "Revenue tracking dashboard",
     "type": "dashboard",
     "created": "2024-01-01T00:00:00Z",
     "lastUpdated": "2024-01-15T10:30:00Z"
@@ -512,7 +512,7 @@ If you cloned the repository locally, use the directory-based approach:
 
 **Parameters:**
 - `dashboard_id` (optional, string) - ID of the dashboard (e.g., "68c20e36b10aaf740421cf12")
-- `dashboard_name` (optional, string) - Name/title of the dashboard (e.g., "Telecom Services (1)")
+- `dashboard_name` (optional, string) - Name/title of the dashboard (e.g., "Revenue over time")
 
 **Note:** Either `dashboard_id` or `dashboard_name` must be provided.
 
@@ -528,7 +528,7 @@ If you cloned the repository locally, use the directory-based approach:
 ```json
 {
   "_id": "68c20e36b10aaf740421cf12",
-  "title": "Telecom Services (1)",
+  "title": "Revenue over time",
   "widgets": [...],
   "filters": [...],
   "datasource": {...},

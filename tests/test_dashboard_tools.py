@@ -25,7 +25,7 @@ async def test_handle_list_dashboards(dashboard_service):
     mock_result = [
         {
             "_id": "68c20e36b10aaf740421cf12",
-            "title": "Telecom Services (1)",
+            "title": "Revenue over time",
             "desc": "",
             "source": "67d081cdea0fb30032897721",
             "type": "dashboard",
@@ -46,7 +46,7 @@ async def test_handle_list_dashboards(dashboard_service):
     data = json.loads(result[0].text)
     assert data == mock_result
     assert data[0]["_id"] == "68c20e36b10aaf740421cf12"
-    assert data[0]["title"] == "Telecom Services (1)"
+    assert data[0]["title"] == "Revenue over time"
 
 
 @pytest.mark.asyncio
@@ -54,7 +54,7 @@ async def test_handle_get_dashboard_info_by_id(dashboard_service):
     """Test get_dashboard_info tool handler with ID."""
     mock_dashboard = {
         "_id": "68c20e36b10aaf740421cf12",
-        "title": "Telecom Services (1)",
+        "title": "Revenue over time",
         "desc": "",
         "source": "67d081cdea0fb30032897721",
         "type": "dashboard",
@@ -62,9 +62,9 @@ async def test_handle_get_dashboard_info_by_id(dashboard_service):
         "lastUpdated": "2025-09-10T23:48:06.009Z",
         "owner": "67c6232ca2e4be002f89c338",
         "datasource": {
-            "title": "SOC Data Model",
-            "id": "live:SOC Data Model",
-            "fullname": "live:SOC Data Model",
+            "title": "Sales Data Model",
+            "id": "live:Sales Data Model",
+            "fullname": "live:Sales Data Model",
             "live": True,
         },
         "layout": {"instanceid": "test", "type": "grid"},
@@ -93,14 +93,14 @@ async def test_handle_get_dashboard_info_by_name(dashboard_service):
     """Test get_dashboard_info tool handler with name."""
     mock_dashboard = {
         "_id": "68c20e36b10aaf740421cf12",
-        "title": "Telecom Services (1)",
+        "title": "Revenue over time",
         "desc": "",
         "source": "67d081cdea0fb30032897721",
         "type": "dashboard",
         "datasource": {
-            "title": "SOC Data Model",
-            "id": "live:SOC Data Model",
-            "fullname": "live:SOC Data Model",
+            "title": "Sales Data Model",
+            "id": "live:Sales Data Model",
+            "fullname": "live:Sales Data Model",
             "live": True,
         },
         "layout": {},
@@ -109,15 +109,15 @@ async def test_handle_get_dashboard_info_by_name(dashboard_service):
     dashboard_service.get_dashboard = AsyncMock(return_value=mock_dashboard)
 
     result = await handle_dashboard_tool(
-        "get_dashboard_info", {"dashboard_name": "Telecom Services (1)"}, dashboard_service
+        "get_dashboard_info", {"dashboard_name": "Revenue over time"}, dashboard_service
     )
 
     assert len(result) == 1
     data = json.loads(result[0].text)
     assert data == mock_dashboard
-    assert data["title"] == "Telecom Services (1)"
+    assert data["title"] == "Revenue over time"
     dashboard_service.get_dashboard.assert_called_once_with(
-        dashboard_id=None, dashboard_name="Telecom Services (1)"
+        dashboard_id=None, dashboard_name="Revenue over time"
     )
 
 

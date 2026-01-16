@@ -9,8 +9,8 @@ async def test_list_dashboards_list_response(dashboard_service, mock_client):
     mock_data = [
         {
             "_id": "68c20e36b10aaf740421cf12",
-            "title": "Telecom Services (1)",
-            "desc": "Telecom services dashboard",
+            "title": "Revenue over time",
+            "desc": "Revenue tracking dashboard",
             "source": "67d081cdea0fb30032897721",
             "type": "dashboard",
             "created": "2025-09-10T23:48:06.009Z",
@@ -23,7 +23,7 @@ async def test_list_dashboards_list_response(dashboard_service, mock_client):
             "shares": [{"shareId": "67c6232ca2e4be002f89c338", "type": "user"}],
             "style": {"paletteId": "62ec379f0c396600377f962f"},
             "layout": {},
-            "datasource": {"title": "SOC Data Model", "id": "live:SOC Data Model"},
+            "datasource": {"title": "Sales Data Model", "id": "live:Sales Data Model"},
             "filters": [],
             "settings": {"autoUpdateOnFiltersChange": True},
             "tenantId": "629f977c2dd9db001af2bbec",
@@ -35,8 +35,8 @@ async def test_list_dashboards_list_response(dashboard_service, mock_client):
 
     assert len(result) == 1
     assert result[0]["_id"] == "68c20e36b10aaf740421cf12"
-    assert result[0]["title"] == "Telecom Services (1)"
-    assert result[0]["desc"] == "Telecom services dashboard"
+    assert result[0]["title"] == "Revenue over time"
+    assert result[0]["desc"] == "Revenue tracking dashboard"
     assert result[0]["source"] == "67d081cdea0fb30032897721"
     # Should be filtered out
     assert "shares" not in result[0]
@@ -54,7 +54,7 @@ async def test_list_dashboards_dict_response(dashboard_service, mock_client):
         "dashboards": [
             {
                 "_id": "68c20e36b10aaf740421cf12",
-                "title": "Telecom Services (1)",
+                "title": "Revenue over time",
                 "desc": "",
                 "source": "67d081cdea0fb30032897721",
                 "type": "dashboard",
@@ -76,7 +76,7 @@ async def test_list_dashboards_dict_response(dashboard_service, mock_client):
 
     assert len(result) == 1
     assert result[0]["_id"] == "68c20e36b10aaf740421cf12"
-    assert result[0]["title"] == "Telecom Services (1)"
+    assert result[0]["title"] == "Revenue over time"
 
 
 @pytest.mark.asyncio
@@ -84,7 +84,7 @@ async def test_get_dashboard_by_id(dashboard_service, mock_client):
     """Test get_dashboard by ID."""
     mock_dashboard = {
         "_id": "68c20e36b10aaf740421cf12",
-        "title": "Telecom Services (1)",
+        "title": "Revenue over time",
         "desc": "",
         "source": "67d081cdea0fb30032897721",
         "type": "dashboard",
@@ -101,9 +101,9 @@ async def test_get_dashboard_by_id(dashboard_service, mock_client):
         "allowChangeSubscription": False,
         "dataExploration": False,
         "datasource": {
-            "title": "SOC Data Model",
-            "id": "live:SOC Data Model",
-            "fullname": "live:SOC Data Model",
+            "title": "Sales Data Model",
+            "id": "live:Sales Data Model",
+            "fullname": "live:Sales Data Model",
             "live": True,
         },
         "defaultFilters": [],
@@ -123,7 +123,7 @@ async def test_get_dashboard_by_id(dashboard_service, mock_client):
 
     assert result == mock_dashboard
     assert result["_id"] == "68c20e36b10aaf740421cf12"
-    assert result["title"] == "Telecom Services (1)"
+    assert result["title"] == "Revenue over time"
     assert "datasource" in result
     assert "layout" in result
     assert "filters" in result
@@ -136,7 +136,7 @@ async def test_get_dashboard_by_name(dashboard_service, mock_client):
     mock_dashboards = [
         {
             "_id": "68c20e36b10aaf740421cf12",
-            "title": "Telecom Services (1)",
+            "title": "Revenue over time",
             "desc": "",
             "source": "67d081cdea0fb30032897721",
             "type": "dashboard",
@@ -170,7 +170,7 @@ async def test_get_dashboard_by_name_not_found(dashboard_service, mock_client):
     mock_dashboards = [
         {
             "_id": "68c20e36b10aaf740421cf12",
-            "title": "Telecom Services (1)",
+            "title": "Revenue over time",
             "desc": "",
             "source": "67d081cdea0fb30032897721",
             "type": "dashboard",
@@ -193,7 +193,7 @@ def test_filter_dashboard_fields(dashboard_service):
     """Test dashboard field filtering."""
     full_dashboard = {
         "_id": "68c20e36b10aaf740421cf12",
-        "title": "Telecom Services (1)",
+        "title": "Revenue over time",
         "desc": "",
         "source": "67d081cdea0fb30032897721",
         "type": "dashboard",
@@ -206,7 +206,7 @@ def test_filter_dashboard_fields(dashboard_service):
         "shares": [{"shareId": "67c6232ca2e4be002f89c338", "type": "user"}],
         "style": {"paletteId": "62ec379f0c396600377f962f"},
         "layout": {"instanceid": "test", "type": "grid"},
-        "datasource": {"title": "SOC Data Model", "id": "live:SOC Data Model"},
+        "datasource": {"title": "Sales Data Model", "id": "live:Sales Data Model"},
         "filters": [],
         "settings": {"autoUpdateOnFiltersChange": True},
         "tenantId": "629f977c2dd9db001af2bbec",
@@ -215,7 +215,7 @@ def test_filter_dashboard_fields(dashboard_service):
     filtered = dashboard_service._filter_dashboard_fields(full_dashboard)
 
     assert filtered["_id"] == "68c20e36b10aaf740421cf12"
-    assert filtered["title"] == "Telecom Services (1)"
+    assert filtered["title"] == "Revenue over time"
     assert filtered["desc"] == ""
     assert filtered["source"] == "67d081cdea0fb30032897721"
     # Should be filtered out

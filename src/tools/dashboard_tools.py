@@ -42,7 +42,7 @@ def get_dashboard_tools() -> list[Tool]:
                     },
                     "dashboard_name": {
                         "type": "string",
-                        "description": "Name/title of the dashboard (e.g., 'Telecom Services (1)')",
+                        "description": "Name/title of the dashboard (e.g., 'Revenue over time')",
                     },
                 },
                 "required": [],
