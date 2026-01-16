@@ -33,4 +33,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Configurable timeouts (30s for metadata, 60s for queries)
 - Support for pagination with `count` and `offset` parameters
 
-[0.1.0]: https://github.com/yourusername/sisense-mcp/releases/tag/v0.1.0
+[0.1.0]: https://github.com/fif911/sisense-mcp/releases/tag/v0.1.0

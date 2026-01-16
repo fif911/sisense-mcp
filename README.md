@@ -25,7 +25,7 @@ A [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server for in
 Run directly from GitHub using `uvx` (like `npx` for Python):
 
 ```bash
-uvx --from git+https://github.com/yourusername/sisense-mcp.git sisense-mcp
+uvx --from git+https://github.com/fif911/sisense-mcp.git sisense-mcp
 ```
 
 Then configure your MCP client (see [Configuration](#configuration) section).
@@ -34,7 +34,7 @@ Then configure your MCP client (see [Configuration](#configuration) section).
 
 1. **Install from GitHub:**
    ```bash
-   uv pip install git+https://github.com/yourusername/sisense-mcp.git
+   uv pip install git+https://github.com/fif911/sisense-mcp.git
    ```
 
 2. **Configure your MCP client** (see [Configuration](#configuration) section)
@@ -106,7 +106,7 @@ You can run the server directly from GitHub without cloning or installing, simil
 **Using `uvx` (like `npx` for Python) - RECOMMENDED:**
 
 ```bash
-uvx --from git+https://github.com/yourusername/sisense-mcp.git sisense-mcp
+uvx --from git+https://github.com/fif911/sisense-mcp.git sisense-mcp
 ```
 
 This single command will:
@@ -118,10 +118,10 @@ This single command will:
 
 ```bash
 # Run from a specific branch
-uvx --from git+https://github.com/yourusername/sisense-mcp.git@main sisense-mcp
+uvx --from git+https://github.com/fif911/sisense-mcp.git@main sisense-mcp
 
 # Run from a specific tag/version
-uvx --from git+https://github.com/yourusername/sisense-mcp.git@v0.1.0 sisense-mcp
+uvx --from git+https://github.com/fif911/sisense-mcp.git@v0.1.0 sisense-mcp
 ```
 
 **Alternative: Install First, Then Run**
@@ -131,14 +131,14 @@ If you prefer to install the package first (useful for frequent use):
 **Using uv:**
 
 ```bash
-uv pip install git+https://github.com/yourusername/sisense-mcp.git
+uv pip install git+https://github.com/fif911/sisense-mcp.git
 sisense-mcp
 ```
 
 **Using pip:**
 
 ```bash
-pip install git+https://github.com/yourusername/sisense-mcp.git
+pip install git+https://github.com/fif911/sisense-mcp.git
 sisense-mcp
 ```
 
@@ -147,9 +147,9 @@ sisense-mcp
 To update to the latest version from GitHub:
 
 ```bash
-uv pip install --upgrade git+https://github.com/yourusername/sisense-mcp.git
+uv pip install --upgrade git+https://github.com/fif911/sisense-mcp.git
 # or with pip:
-pip install --upgrade git+https://github.com/yourusername/sisense-mcp.git
+pip install --upgrade git+https://github.com/fif911/sisense-mcp.git
 ```
 
 ### Option 2: Clone and Install Locally
@@ -159,7 +159,7 @@ If you prefer to clone the repository locally:
 **Step 1: Clone the Repository**
 
 ```bash
-git clone https://github.com/yourusername/sisense-mcp.git
+git clone https://github.com/fif911/sisense-mcp.git
 cd sisense-mcp
 ```
 
@@ -203,7 +203,7 @@ The simplest approach - runs directly from GitHub without installation, like `np
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/yourusername/sisense-mcp.git",
+        "git+https://github.com/fif911/sisense-mcp.git",
         "sisense-mcp"
       ],
       "env": {
@@ -224,7 +224,7 @@ The simplest approach - runs directly from GitHub without installation, like `np
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/yourusername/sisense-mcp.git",
+        "git+https://github.com/fif911/sisense-mcp.git",
         "sisense-mcp"
       ],
       "env": {
@@ -245,7 +245,7 @@ The simplest approach - runs directly from GitHub without installation, like `np
       "command": "uvx",
       "args": [
         "--from",
-        "git+https://github.com/yourusername/sisense-mcp.git@v0.1.0",
+        "git+https://github.com/fif911/sisense-mcp.git@v0.1.0",
         "sisense-mcp"
       ],
       "env": {
