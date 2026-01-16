@@ -21,10 +21,9 @@ jobs:
         with:
           python-version: "3.12"
           enable-cache: true
-          cache-dependency-glob: "uv.lock"
 
       - name: Install the project
-        run: uv sync --locked --extra dev
+        run: uv sync --extra dev
 
       - name: Run tests
         env:
@@ -44,10 +43,9 @@ jobs:
         with:
           python-version: "3.12"
           enable-cache: true
-          cache-dependency-glob: "uv.lock"
 
       - name: Install the project
-        run: uv sync --locked --extra dev
+        run: uv sync --extra dev
 
       - name: Run lint checks
         run: make lint

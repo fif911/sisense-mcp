@@ -87,6 +87,9 @@ coverage.xml
 # pyenv
 .python-version
 
+# uv
+uv.lock
+
 # Logs
 *.log
 
