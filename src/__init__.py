@@ -1,0 +1,1 @@
+# Sisense MCP Server Package
