@@ -76,7 +76,7 @@ def test_encode_datasource_name():
     client = SisenseClient("https://test.sisense.com", "test_token")
 
     # Test basic encoding
-    encoded = client.encode_datasource_name("[REPORT] M2M Summary")
+    encoded = client.encode_datasource_name("Sales Data Model")
     assert "%20" in encoded or " " not in encoded
 
     # Test already safe characters

@@ -38,7 +38,7 @@ def get_elasticube_tools() -> list[Tool]:
                 "properties": {
                     "elasticube_name": {
                         "type": "string",
-                        "description": "Name of the ElastiCube (e.g., '[REPORT] M2M Summary')",
+                        "description": "Name of the ElastiCube (e.g., 'Sales Data Model')",
                     }
                 },
                 "required": ["elasticube_name"],
@@ -56,7 +56,7 @@ def get_elasticube_tools() -> list[Tool]:
                 "properties": {
                     "datasource": {
                         "type": "string",
-                        "description": "Name of the ElastiCube datasource (e.g., '[REPORT] M2M Summary')",
+                        "description": "Name of the ElastiCube datasource (e.g., 'Sales Data Model')",
                     },
                     "sql_query": {
                         "type": "string",

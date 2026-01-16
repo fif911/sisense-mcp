@@ -50,7 +50,7 @@ class ElastiCubeService(SisenseService):
         """Get schema (tables/columns) for an ElastiCube.
 
         Args:
-            elasticube_name: Name of the ElastiCube (e.g., '[REPORT] M2M Summary')
+            elasticube_name: Name of the ElastiCube (e.g., 'Sales Data Model')
 
         Returns:
             Full schema JSON including datasets, tables, columns, relations, and relationTables
@@ -66,7 +66,7 @@ class ElastiCubeService(SisenseService):
         """Execute SQL query on ElastiCube.
 
         Args:
-            datasource: Name of the ElastiCube datasource (e.g., '[REPORT] M2M Summary')
+            datasource: Name of the ElastiCube datasource (e.g., 'Sales Data Model')
             sql_query: SQL query string (must start with SELECT)
             count: Maximum number of rows to return (default: 5000)
             offset: Offset for pagination (default: 0)

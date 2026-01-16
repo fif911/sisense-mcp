@@ -37,8 +37,8 @@ async def test_call_tool_list_elasticubes():
         mock_service.list_elasticubes = AsyncMock(
             return_value=[
                 {
-                    "_id": "66986f16c38c0befbce4c80f",
-                    "title": "[REPORT] M2M Summary",
+                    "_id": "507f1f77bcf86cd799439011",
+                    "title": "Sales Data Model",
                     "type": "extract",
                     "server": "LocalHost",
                     "lastUpdated": "2024-08-02T16:50:14.417Z",

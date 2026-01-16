@@ -56,7 +56,7 @@ async def call_tool(name: str, arguments: dict) -> list:
     """Handle tool execution requests."""
     if elasticube_service is None or dashboard_service is None:
         raise RuntimeError("Services were not initialized. Check configuration and logs.")
-
+        
     # Route to appropriate tool handler
     elasticube_tool_names = ["list_elasticubes", "get_elasticube_schema", "query_elasticube"]
     dashboard_tool_names = ["list_dashboards", "get_dashboard_info"]
@@ -65,8 +65,8 @@ async def call_tool(name: str, arguments: dict) -> list:
         return await handle_elasticube_tool(name, arguments, elasticube_service)
     elif name in dashboard_tool_names:
         return await handle_dashboard_tool(name, arguments, dashboard_service)
-    else:
-        raise ValueError(f"Unknown tool: {name}")
+        else:
+            raise ValueError(f"Unknown tool: {name}")
 
 
 async def main():
@@ -75,7 +75,7 @@ async def main():
         logger.info("Initializing Sisense MCP server...")
         logger.info(f"Base URL: {settings.sisense_base_url}")
         logger.info("Token configured: " + ("Yes" if settings.sisense_api_token else "No"))
-
+        
         logger.info("Starting stdio_server...")
         async with stdio_server() as (read_stream, write_stream):
             logger.info("stdio_server started successfully")

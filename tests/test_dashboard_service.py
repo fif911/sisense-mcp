@@ -26,7 +26,7 @@ async def test_list_dashboards_list_response(dashboard_service, mock_client):
             "datasource": {"title": "Sales Data Model", "id": "live:Sales Data Model"},
             "filters": [],
             "settings": {"autoUpdateOnFiltersChange": True},
-            "tenantId": "629f977c2dd9db001af2bbec",
+            "tenantId": "507f1f77bcf86cd799439012",
         }
     ]
     mock_client.get.return_value = mock_data
@@ -115,7 +115,7 @@ async def test_get_dashboard_by_id(dashboard_service, mock_client):
         "lastOpened": "2025-09-11T16:38:36.859Z",
         "parentFolder": None,
         "settings": {"autoUpdateOnFiltersChange": True},
-        "tenantId": "629f977c2dd9db001af2bbec",
+        "tenantId": "507f1f77bcf86cd799439012",
     }
     mock_client.get.return_value = mock_dashboard
 
@@ -209,7 +209,7 @@ def test_filter_dashboard_fields(dashboard_service):
         "datasource": {"title": "Sales Data Model", "id": "live:Sales Data Model"},
         "filters": [],
         "settings": {"autoUpdateOnFiltersChange": True},
-        "tenantId": "629f977c2dd9db001af2bbec",
+        "tenantId": "507f1f77bcf86cd799439012",
     }
 
     filtered = dashboard_service._filter_dashboard_fields(full_dashboard)

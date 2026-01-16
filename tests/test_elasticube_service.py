@@ -8,10 +8,10 @@ async def test_list_elasticubes_list_response(elasticube_service, mock_client):
     """Test list_elasticubes with list response."""
     mock_data = [
         {
-            "_id": "66986f16c38c0befbce4c80f",
+            "_id": "507f1f77bcf86cd799439011",
             "buildDestination": {"destination": "elasticube"},
-            "creator": "64f0f302f45dd9002da343ae",
-            "datasets": ["a792cf22-4631-4d1d-a20f-d1b7eb91042e"],
+            "creator": "507f1f77bcf86cd799439013",
+            "datasets": ["550e8400-e29b-41d4-a716-446655440001"],
             "experiments": {},
             "fiscal": "system",
             "hasDatasetsWithoutConnectionParameters": False,
@@ -23,12 +23,12 @@ async def test_list_elasticubes_list_response(elasticube_service, mock_client):
                 "recollectStatsInterval": 12,
             },
             "modeling-transformations": [],
-            "oid": "5c886c69-3301-4ecd-9b3d-7e6f40144a8d",
+            "oid": "550e8400-e29b-41d4-a716-446655440000",
             "relationType": "direct",
             "server": "LocalHost",
-            "shares": [{"partyId": "629f977c2dd9db001af2bbdd", "type": "group", "permission": "a"}],
-            "tenantId": "629f977c2dd9db001af2bbec",
-            "title": "[REPORT] M2M Summary",
+            "shares": [{"partyId": "507f1f77bcf86cd799439014", "type": "group", "permission": "a"}],
+            "tenantId": "507f1f77bcf86cd799439012",
+            "title": "Sales Data Model",
             "type": "extract",
             "importTime": None,
             "lastBuildAttempt": None,
@@ -46,10 +46,10 @@ async def test_list_elasticubes_list_response(elasticube_service, mock_client):
             "server": "Remote",
             "lastUpdated": "2024-01-02T10:30:00.000Z",
             "buildDestination": {"destination": "elasticube"},
-            "creator": "64f0f302f45dd9002da343ae",
+            "creator": "507f1f77bcf86cd799439013",
             "datasets": [],
             "shares": [],
-            "tenantId": "629f977c2dd9db001af2bbec",
+            "tenantId": "507f1f77bcf86cd799439012",
         },
     ]
     mock_client.get.return_value = mock_data
@@ -57,8 +57,8 @@ async def test_list_elasticubes_list_response(elasticube_service, mock_client):
     result = await elasticube_service.list_elasticubes()
 
     assert len(result) == 2
-    assert result[0]["_id"] == "66986f16c38c0befbce4c80f"
-    assert result[0]["title"] == "[REPORT] M2M Summary"
+    assert result[0]["_id"] == "507f1f77bcf86cd799439011"
+    assert result[0]["title"] == "Sales Data Model"
     assert result[0]["type"] == "extract"
     assert result[0]["server"] == "LocalHost"
     assert result[0]["lastUpdated"] == "2024-08-02T16:50:14.417Z"
@@ -75,16 +75,16 @@ async def test_list_elasticubes_dict_response(elasticube_service, mock_client):
     mock_data = {
         "elasticubes": [
             {
-                "_id": "66986f16c38c0befbce4c80f",
-                "title": "[REPORT] M2M Summary",
+                "_id": "507f1f77bcf86cd799439011",
+                "title": "Sales Data Model",
                 "type": "extract",
                 "server": "LocalHost",
                 "lastUpdated": "2024-08-02T16:50:14.417Z",
                 "buildDestination": {"destination": "elasticube"},
-                "creator": "64f0f302f45dd9002da343ae",
-                "datasets": ["a792cf22-4631-4d1d-a20f-d1b7eb91042e"],
+                "creator": "507f1f77bcf86cd799439013",
+                "datasets": ["550e8400-e29b-41d4-a716-446655440001"],
                 "shares": [],
-                "tenantId": "629f977c2dd9db001af2bbec",
+                "tenantId": "507f1f77bcf86cd799439012",
             }
         ]
     }
@@ -93,8 +93,8 @@ async def test_list_elasticubes_dict_response(elasticube_service, mock_client):
     result = await elasticube_service.list_elasticubes()
 
     assert len(result) == 1
-    assert result[0]["_id"] == "66986f16c38c0befbce4c80f"
-    assert result[0]["title"] == "[REPORT] M2M Summary"
+    assert result[0]["_id"] == "507f1f77bcf86cd799439011"
+    assert result[0]["title"] == "Sales Data Model"
     # Should be filtered out
     assert "buildDestination" not in result[0]
     assert "creator" not in result[0]
@@ -104,8 +104,8 @@ async def test_list_elasticubes_dict_response(elasticube_service, mock_client):
 async def test_get_schema(elasticube_service, mock_client):
     """Test get_schema."""
     mock_schema = {
-        "oid": "5c886c69-3301-4ecd-9b3d-7e6f40144a8d",
-        "title": "[REPORT] M2M Summary",
+        "oid": "550e8400-e29b-41d4-a716-446655440000",
+        "title": "Sales Data Model",
         "server": "LocalHost",
         "serverId": "local",
         "shares": [],
@@ -117,7 +117,7 @@ async def test_get_schema(elasticube_service, mock_client):
         "lastUpdated": "2024-08-02T16:50:14.417Z",
         "datasets": [
             {
-                "oid": "a792cf22-4631-4d1d-a20f-d1b7eb91042e",
+                "oid": "550e8400-e29b-41d4-a716-446655440001",
                 "type": "elasticube",
                 "connection": {},
                 "lastUpdated": "2024-08-02T16:50:14.417Z",
@@ -135,23 +135,23 @@ async def test_get_schema(elasticube_service, mock_client):
         "modelingTransformations": [],
         "relations": [],
         "schedule": None,
-        "creator": {"_id": "64f0f302f45dd9002da343ae"},
+        "creator": {"_id": "507f1f77bcf86cd799439013"},
         "type": "extract",
         "relationType": "direct",
-        "tenant": {"_id": "629f977c2dd9db001af2bbec"},
+        "tenant": {"_id": "507f1f77bcf86cd799439012"},
         "aiAccessController": None,
         "relationsTables": [],
     }
     mock_client.get.return_value = mock_schema
 
-    result = await elasticube_service.get_schema("[REPORT] M2M Summary")
+    result = await elasticube_service.get_schema("Sales Data Model")
 
     assert result == mock_schema
     assert "datasets" in result
     assert "relations" in result
     assert "relationsTables" in result
     mock_client.get.assert_called_once_with(
-        "/api/v2/datamodels/schema", params={"title": "[REPORT] M2M Summary"}
+        "/api/v2/datamodels/schema", params={"title": "Sales Data Model"}
     )
 
 
@@ -175,7 +175,7 @@ async def test_query_sql_success(elasticube_service, mock_client):
     mock_client.encode_datasource_name = lambda x: x.replace(" ", "%20")
 
     result = await elasticube_service.query_sql(
-        datasource="[REPORT] M2M Summary",
+        datasource="Sales Data Model",
         sql_query="SELECT * FROM brands LIMIT 10",
         count=10,
         offset=0,
@@ -204,14 +204,14 @@ async def test_query_sql_with_error(elasticube_service, mock_client):
 def test_filter_elasticube_fields(elasticube_service):
     """Test elasticube field filtering."""
     full_elasticube = {
-        "_id": "66986f16c38c0befbce4c80f",
-        "title": "[REPORT] M2M Summary",
+        "_id": "507f1f77bcf86cd799439011",
+        "title": "Sales Data Model",
         "type": "extract",
         "server": "LocalHost",
         "lastUpdated": "2024-08-02T16:50:14.417Z",
         "buildDestination": {"destination": "elasticube"},
-        "creator": "64f0f302f45dd9002da343ae",
-        "datasets": ["a792cf22-4631-4d1d-a20f-d1b7eb91042e"],
+        "creator": "507f1f77bcf86cd799439013",
+        "datasets": ["550e8400-e29b-41d4-a716-446655440001"],
         "experiments": {},
         "fiscal": "system",
         "hasDatasetsWithoutConnectionParameters": False,
@@ -220,10 +220,10 @@ def test_filter_elasticube_fields(elasticube_service):
             "allTablesPerCollection": True,
         },
         "modeling-transformations": [],
-        "oid": "5c886c69-3301-4ecd-9b3d-7e6f40144a8d",
+        "oid": "550e8400-e29b-41d4-a716-446655440000",
         "relationType": "direct",
         "shares": [],
-        "tenantId": "629f977c2dd9db001af2bbec",
+        "tenantId": "507f1f77bcf86cd799439012",
         "importTime": None,
         "lastBuildAttempt": None,
         "lastBuildTime": "2024-08-20T20:14:22.783Z",
@@ -231,8 +231,8 @@ def test_filter_elasticube_fields(elasticube_service):
 
     filtered = elasticube_service._filter_elasticube_fields(full_elasticube)
 
-    assert filtered["_id"] == "66986f16c38c0befbce4c80f"
-    assert filtered["title"] == "[REPORT] M2M Summary"
+    assert filtered["_id"] == "507f1f77bcf86cd799439011"
+    assert filtered["title"] == "Sales Data Model"
     assert filtered["type"] == "extract"
     assert filtered["server"] == "LocalHost"
     assert filtered["lastUpdated"] == "2024-08-02T16:50:14.417Z"

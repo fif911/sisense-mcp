@@ -25,8 +25,8 @@ async def test_handle_list_elasticubes(elasticube_service):
     """Test list_elasticubes tool handler."""
     mock_result = [
         {
-            "_id": "66986f16c38c0befbce4c80f",
-            "title": "[REPORT] M2M Summary",
+            "_id": "507f1f77bcf86cd799439011",
+            "title": "Sales Data Model",
             "type": "extract",
             "server": "LocalHost",
             "lastUpdated": "2024-08-02T16:50:14.417Z",
@@ -40,20 +40,20 @@ async def test_handle_list_elasticubes(elasticube_service):
     assert result[0].type == "text"
     data = json.loads(result[0].text)
     assert data == mock_result
-    assert data[0]["_id"] == "66986f16c38c0befbce4c80f"
-    assert data[0]["title"] == "[REPORT] M2M Summary"
+    assert data[0]["_id"] == "507f1f77bcf86cd799439011"
+    assert data[0]["title"] == "Sales Data Model"
 
 
 @pytest.mark.asyncio
 async def test_handle_get_elasticube_schema(elasticube_service):
     """Test get_elasticube_schema tool handler."""
     mock_schema = {
-        "oid": "5c886c69-3301-4ecd-9b3d-7e6f40144a8d",
-        "title": "[REPORT] M2M Summary",
+        "oid": "550e8400-e29b-41d4-a716-446655440000",
+        "title": "Sales Data Model",
         "server": "LocalHost",
         "datasets": [
             {
-                "oid": "a792cf22-4631-4d1d-a20f-d1b7eb91042e",
+                "oid": "550e8400-e29b-41d4-a716-446655440001",
                 "type": "elasticube",
                 "name": "Dataset1",
                 "fullname": "Dataset1",
@@ -65,7 +65,7 @@ async def test_handle_get_elasticube_schema(elasticube_service):
     elasticube_service.get_schema = AsyncMock(return_value=mock_schema)
 
     result = await handle_elasticube_tool(
-        "get_elasticube_schema", {"elasticube_name": "[REPORT] M2M Summary"}, elasticube_service
+        "get_elasticube_schema", {"elasticube_name": "Sales Data Model"}, elasticube_service
     )
 
     assert len(result) == 1
@@ -73,7 +73,7 @@ async def test_handle_get_elasticube_schema(elasticube_service):
     assert data == mock_schema
     assert "datasets" in data
     assert "relations" in data
-    elasticube_service.get_schema.assert_called_once_with("[REPORT] M2M Summary")
+    elasticube_service.get_schema.assert_called_once_with("Sales Data Model")
 
 
 @pytest.mark.asyncio
@@ -104,7 +104,7 @@ async def test_handle_query_elasticube(elasticube_service):
     result = await handle_elasticube_tool(
         "query_elasticube",
         {
-            "datasource": "[REPORT] M2M Summary",
+            "datasource": "Sales Data Model",
             "sql_query": "SELECT * FROM brands LIMIT 10",
         },
         elasticube_service,
@@ -117,7 +117,7 @@ async def test_handle_query_elasticube(elasticube_service):
     assert "metadata" in data
     assert len(data["rows"]) == 2
     elasticube_service.query_sql.assert_called_once_with(
-        datasource="[REPORT] M2M Summary",
+        datasource="Sales Data Model",
         sql_query="SELECT * FROM brands LIMIT 10",
         count=5000,
         offset=0,
@@ -136,7 +136,7 @@ async def test_handle_query_elasticube_with_pagination(elasticube_service):
     await handle_elasticube_tool(
         "query_elasticube",
         {
-            "datasource": "[REPORT] M2M Summary",
+            "datasource": "Sales Data Model",
             "sql_query": "SELECT * FROM brands",
             "count": 100,
             "offset": 50,
@@ -145,7 +145,7 @@ async def test_handle_query_elasticube_with_pagination(elasticube_service):
     )
 
     elasticube_service.query_sql.assert_called_once_with(
-        datasource="[REPORT] M2M Summary", sql_query="SELECT * FROM brands", count=100, offset=50
+        datasource="Sales Data Model", sql_query="SELECT * FROM brands", count=100, offset=50
     )
 
 
@@ -154,7 +154,7 @@ async def test_handle_query_elasticube_missing_args(elasticube_service):
     """Test query_elasticube with missing required arguments."""
     with pytest.raises(ValueError, match="Missing required arguments"):
         await handle_elasticube_tool(
-            "query_elasticube", {"datasource": "[REPORT] M2M Summary"}, elasticube_service
+            "query_elasticube", {"datasource": "Sales Data Model"}, elasticube_service
         )
 
 
@@ -181,7 +181,7 @@ async def test_handle_elasticube_tool_timeout(elasticube_service):
     with pytest.raises(Exception, match="Request timeout"):
         await handle_elasticube_tool(
             "query_elasticube",
-            {"datasource": "[REPORT] M2M Summary", "sql_query": "SELECT * FROM brands"},
+            {"datasource": "Sales Data Model", "sql_query": "SELECT * FROM brands"},
             elasticube_service,
         )
 

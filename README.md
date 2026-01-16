@@ -378,7 +378,7 @@ If you cloned the repository locally, use the directory-based approach:
 
 **Returns:** A filtered list of ElastiCubes with essential fields:
 - `_id` - Unique identifier
-- `title` - Name of the ElastiCube (e.g., "[REPORT] M2M Summary")
+- `title` - Name of the ElastiCube (e.g., "Sales Data Model")
 - `type` - Type of ElastiCube (e.g., "extract", "live")
 - `server` - Server where the cube is hosted
 - `lastUpdated` - Timestamp of last update
@@ -388,7 +388,7 @@ If you cloned the repository locally, use the directory-based approach:
 [
   {
     "_id": "507f1f77bcf86cd799439011",
-    "title": "[REPORT] M2M Summary",
+    "title": "Sales Data Model",
     "type": "extract",
     "server": "LocalHost",
     "lastUpdated": "2024-01-15T10:30:00Z"
@@ -405,7 +405,7 @@ If you cloned the repository locally, use the directory-based approach:
 **When to use:** Use this when you need to understand the data model structure before writing queries, or when debugging joins and relationships.
 
 **Parameters:**
-- `elasticube_name` (required, string) - Name of the ElastiCube (e.g., "[REPORT] M2M Summary")
+- `elasticube_name` (required, string) - Name of the ElastiCube (e.g., "Sales Data Model")
 
 **Returns:** Full schema JSON including:
 - `datasets` - Dataset definitions
@@ -439,7 +439,7 @@ If you cloned the repository locally, use the directory-based approach:
 **When to use:** Use this when you already know which cube and tables/fields you want, and need actual data rows for analysis, debugging, or sampling.
 
 **Parameters:**
-- `datasource` (required, string) - Name of the ElastiCube datasource (e.g., "[REPORT] M2M Summary")
+- `datasource` (required, string) - Name of the ElastiCube datasource (e.g., "Sales Data Model")
 - `sql_query` (required, string) - SQL query string (must start with SELECT)
 - `count` (optional, integer) - Maximum number of rows to return (default: 5000, max recommended: 10000)
 - `offset` (optional, integer) - Offset for pagination (default: 0)
@@ -583,7 +583,7 @@ uv sync  # Or: pip install -e .
 ### Query Errors
 
 - Verify ElastiCube name matches exactly (including brackets, case, and special characters)
-- Example: `[REPORT] M2M Summary` (with brackets and exact spacing)
+- Example: `Sales Data Model` (with brackets and exact spacing)
 - Check SQL syntax is valid for Sisense
 - Ensure table names match the schema (use `get_elasticube_schema` to verify)
 

@@ -82,7 +82,7 @@ class SisenseClient:
         """URL encode a datasource name for use in API endpoints.
 
         Args:
-            datasource: Datasource name (e.g., '[REPORT] M2M Summary')
+            datasource: Datasource name (e.g., 'Sales Data Model')
 
         Returns:
             URL-encoded datasource name
