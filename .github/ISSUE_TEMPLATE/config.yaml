@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: MCP Documentation
+    url: https://modelcontextprotocol.io/
+    about: Documentation about the Model Context Protocol
+
+  - name: Sisense Documentation
+    url: https://sisense.dev/
+    about: Documentation about Sisense API and platform
