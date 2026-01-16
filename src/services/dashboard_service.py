@@ -4,6 +4,9 @@ from typing import Any
 
 from .sisense_service import SisenseService
 
+# API version prefix for v1 endpoints
+API_V1_PREFIX = "/api/v1"
+
 
 class DashboardService(SisenseService):
     """Service for Dashboard operations."""
@@ -87,3 +90,64 @@ class DashboardService(SisenseService):
                         return dashboard
 
             raise ValueError(f"Dashboard with name '{dashboard_name}' not found")
+
+    async def export_dashboard_png(
+        self,
+        dashboard_id: str,
+        width: int = 1000,
+        layout: str = "asis",
+        show_dashboard_title: bool = True,
+        show_dashboard_filters: bool = True,
+        show_datasource_info: bool = True,
+        shared_mode: bool = None,
+        tenant_id: str = None,
+    ) -> bytes:
+        """Export dashboard as PNG image.
+
+        Args:
+            dashboard_id: ID of the dashboard to export
+            width: Image width in pixels (default: 1000)
+            layout: Layout mode - "asis" or other layout options (default: "asis")
+            show_dashboard_title: Whether to show dashboard title (default: True)
+            show_dashboard_filters: Whether to show dashboard filters (default: True)
+            show_datasource_info: Whether to show datasource info (default: True)
+            shared_mode: If dashboard is in shared mode (optional)
+            tenant_id: Tenant ID for x-tenant-id header (optional)
+
+        Returns:
+            PNG image data as bytes
+
+        Raises:
+            ValueError: If dashboard_id is not provided
+            httpx.HTTPStatusError: If the API request fails
+        """
+        if not dashboard_id:
+            raise ValueError("dashboard_id must be provided")
+
+        # This endpoint uses v1 API (other endpoints use 0.9 API)
+        endpoint = f"{API_V1_PREFIX}/export/dashboards/{dashboard_id}/png"
+
+        # Prepare request body
+        body = {
+            "params": {
+                "width": width,
+                "layout": layout,
+                "showDashboardTitle": show_dashboard_title,
+                "showDashboardFilters": show_dashboard_filters,
+                "showDatasourceInfo": show_datasource_info,
+            }
+        }
+
+        # Prepare headers (add x-tenant-id if provided)
+        headers = {}
+        if tenant_id:
+            headers["x-tenant-id"] = tenant_id
+
+        # Prepare query parameters
+        params = {}
+        if shared_mode is not None:
+            params["sharedMode"] = str(shared_mode).lower()
+
+        return await self.client.post_binary(
+            endpoint, json_data=body, headers=headers, params=params if params else None
+        )

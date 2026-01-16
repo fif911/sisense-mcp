@@ -59,7 +59,7 @@ async def call_tool(name: str, arguments: dict) -> list:
 
     # Route to appropriate tool handler
     elasticube_tool_names = ["list_elasticubes", "get_elasticube_schema", "query_elasticube"]
-    dashboard_tool_names = ["list_dashboards", "get_dashboard_info"]
+    dashboard_tool_names = ["list_dashboards", "get_dashboard_info", "export_dashboard_png"]
 
     if name in elasticube_tool_names:
         return await handle_elasticube_tool(name, arguments, elasticube_service)
